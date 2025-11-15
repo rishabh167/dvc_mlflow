@@ -1,0 +1,54 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+env/
+venv/
+ENV/
+.venv
+
+# Data files (tracked by DVC)
+/data/raw/*.csv
+/data/processed/*.pkl
+
+# Models (tracked by DVC)
+/saved_models/*.h5
+/saved_models/*.keras
+
+# MLflow
+/mlruns/
+/mlflow_artifacts/
+
+# DVC
+/dvc_storage/
+.dvc/config.local
+.dvc/tmp/
+
+# Artifacts
+/artifacts/*.pkl
+
+# Plots
+/plots/*.png
+
+# Jupyter Notebooks
+.ipynb_checkpoints/
+*.ipynb
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Logs
+*.log
+
+# Environment
+.env
+.env.local

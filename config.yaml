@@ -1,0 +1,42 @@
+# Data Configuration
+data:
+  raw_path: "data/raw/sentiment_data.csv"
+  processed_path: "data/processed/processed_data.pkl"
+  max_words: 10000
+  max_len: 100
+  test_size: 0.2
+  random_state: 42
+
+# Model Configuration
+models:
+  lstm:
+    embedding_dim: 128
+    lstm_units: 64
+    dropout: 0.5
+    epochs: 10
+    batch_size: 32
+  
+  gru:
+    embedding_dim: 128
+    gru_units: 64
+    dropout: 0.5
+    epochs: 10
+    batch_size: 32
+  
+  textcnn:
+    embedding_dim: 128
+    filters: 128
+    kernel_sizes: [3, 4, 5]
+    dropout: 0.5
+    epochs: 10
+    batch_size: 32
+
+# MLflow Configuration
+mlflow:
+  experiment_name: "sentiment_analysis"
+  tracking_uri: "http://localhost:5000"
+
+# DVC Configuration
+dvc:
+  remote_name: "myremote"
+  remote_url: "./dvc_storage"

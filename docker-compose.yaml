@@ -1,0 +1,43 @@
+version: '3.8'
+
+services:
+  mlflow:
+    image: python:3.10-slim
+    container_name: mlflow_server
+    ports:
+      - "5000:5000"
+    volumes:
+      - ./mlruns:/mlflow/mlruns
+      - ./mlflow_artifacts:/mlflow/artifacts
+    command: >
+      bash -c "pip install mlflow &&
+               mlflow server 
+               --host 0.0.0.0 
+               --port 5000 
+               --backend-store-uri sqlite:///mlflow/mlruns/mlflow.db
+               --default-artifact-root /mlflow/artifacts"
+    networks:
+      - sentiment_network
+
+  sentiment_app:
+    build: .
+    container_name: sentiment_analysis
+    depends_on:
+      - mlflow
+    volumes:
+      - .:/app
+      - ./data:/app/data
+      - ./saved_models:/app/saved_models
+      - ./mlruns:/app/mlruns
+      - ./dvc_storage:/app/dvc_storage
+    environment:
+      - MLFLOW_TRACKING_URI=http://mlflow:5000
+      - PYTHONUNBUFFERED=1
+    networks:
+      - sentiment_network
+    stdin_open: true
+    tty: true
+
+networks:
+  sentiment_network:
+    driver: bridge

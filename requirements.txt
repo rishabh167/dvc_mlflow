@@ -1,0 +1,9 @@
+tensorflow==2.15.0
+mlflow==2.9.2
+dvc==3.35.0
+pandas==2.1.4
+numpy==1.24.3
+scikit-learn==1.3.2
+matplotlib==3.8.2
+seaborn==0.13.0
+python-dotenv==1.0.0

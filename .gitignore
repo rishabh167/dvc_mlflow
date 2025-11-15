@@ -1,0 +1,30 @@
+# Python
+__pycache__/
+*.py[cod]
+.Python
+venv/
+env/
+
+# Data (tracked by DVC)
+/data/raw/*.csv
+/data/processed/*.pkl
+
+# Models (tracked by DVC)
+/saved_models/*.h5
+
+# MLflow
+/mlruns/
+/mlflow_artifacts/
+
+# DVC
+/dvc_storage/
+
+# Artifacts
+/artifacts/*.pkl
+
+# Plots
+/plots/*.png
+
+# Environment
+.env
+/saved_models
